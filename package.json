@@ -3,20 +3,11 @@
   "version": "1.0.0",
   "description": "Full-stack Quiz Application - Express, MongoDB, React, Redux Toolkit, Bootstrap 5",
   "scripts": {
-    "start": "node backend/bin/www",
-    "build": "cd frontend && npm install && npm run build",
-    "seed": "cd backend && npm run seed",
     "start:backend": "cd backend && npm start",
     "start:frontend": "cd frontend && npm run dev",
-    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.5"
+    "seed": "cd backend && npm run seed",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "build": "cd frontend && npm run build"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

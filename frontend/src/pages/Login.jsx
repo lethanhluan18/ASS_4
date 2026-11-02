@@ -33,12 +33,6 @@ const Login = () => {
     dispatch(loginUser({ username: username.trim(), password }));
   };
 
-  // Quick credentials filler for testing convenience
-  const fillCredentials = (user, pass) => {
-    setUsername(user);
-    setPassword(pass);
-  };
-
   return (
     <div
       className="d-flex flex-column justify-content-center align-items-center vh-100"
@@ -114,35 +108,6 @@ const Login = () => {
             </Link>
           </div>
         </form>
-
-        {/* Demo Helper Pill */}
-        <div className="mt-4 pt-3 border-top text-center text-muted" style={{ fontSize: '0.85rem' }}>
-          <div className="mb-2 text-primary fw-medium">
-            Mật khẩu mặc định: <strong>123</strong> (hoặc <strong>password123</strong>)
-          </div>
-          <span>Bấm để điền nhanh: </span>
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm py-0 px-2 me-1"
-            onClick={() => fillCredentials('John', '123')}
-          >
-            John (User)
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm py-0 px-2 me-1"
-            onClick={() => fillCredentials('Mary', '123')}
-          >
-            Mary (Admin)
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm py-0 px-2"
-            onClick={() => fillCredentials('admin', '123')}
-          >
-            admin
-          </button>
-        </div>
       </div>
     </div>
   );

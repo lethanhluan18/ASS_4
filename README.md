@@ -33,7 +33,6 @@ ASS_4/
 ├── backend/
 │   ├── bin/
 │   │   └── www                     # Express Generator entry point script
-│   ├── app.js                      # Express App initialization & middleware
 │   ├── controllers/
 │   │   ├── authController.js       # Register, Login, GetMe
 │   │   ├── questionController.js   # CRUD questions & answer submission
@@ -52,10 +51,10 @@ ASS_4/
 │   │   ├── quizRoutes.js
 │   │   └── articleRoutes.js
 │   ├── .env                        # PORT, MONGODB_URI, JWT_SECRET
+│   ├── app.js                      # Express App initialization & middleware
 │   ├── package.json                # "start": "node ./bin/www"
 │   ├── seed.js                     # Pre-populates database with John, Mary, and the 5 sample questions
-│   ├── server.js                   # Bridge to bin/www
-│   └── test-api.js                 # Automated backend test suite
+│   └── server.js                   # Bridge to bin/www
 │
 ├── frontend/
 │   ├── src/
@@ -87,15 +86,12 @@ ASS_4/
 │   └── vite.config.js              # Vite config (runs on Port 3001 with /api proxy)
 │
 ├── package.json                    # Root package.json with concurrent dev runner
-├── test-e2e.js                     # End-to-end integration test runner
 └── README.md
 ```
 
 ---
 
-## 🔑 Default Test Accounts & Seed Data
-
-The database comes pre-seeded with:
+## 🔑 Default Accounts & Data
 
 | Account Role | Username | Password | Default Redirect | Permissions |
 | :--- | :--- | :--- | :--- | :--- |
@@ -117,7 +113,7 @@ The database comes pre-seeded with:
 - **Node.js**: v18+ (tested on Node v22)
 - **MongoDB**: Running locally on `mongodb://127.0.0.1:27017`
 
-### 2. Seeding Data (Optional if already seeded)
+### 2. Seeding Data (Initial setup)
 ```bash
 npm run seed
 ```
@@ -127,22 +123,5 @@ From the project root (`ASS_4/`):
 ```bash
 npm run dev
 ```
-This runs:
 - **Backend API**: `http://localhost:5000`
 - **Frontend App**: `http://localhost:3001` (matches assignment screenshot URL)
-
----
-
-## 🧪 Testing the APIs & Integration
-
-Run automated tests directly:
-- **Backend Unit / Integration Tests**:
-  ```bash
-  cd backend
-  node test-api.js
-  ```
-- **End-to-End Proxy & API Verification**:
-  ```bash
-  node test-e2e.js
-  ```
-

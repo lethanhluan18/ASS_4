@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-// Automatically use VITE_API_URL if provided (e.g. separate backend deployment)
-// Otherwise fallback to '/api' for same-domain proxy or Vercel serverless deployment
-const baseURL = import.meta.env.VITE_API_URL || '/api';
-
 const api = axios.create({
-  baseURL,
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -24,4 +20,3 @@ api.interceptors.request.use(
 );
 
 export default api;
-

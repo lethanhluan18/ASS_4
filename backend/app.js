@@ -12,40 +12,23 @@ const articleRoutes = require('./routes/articleRoutes');
 
 const app = express();
 
-// Connect to MongoDB with caching for serverless environments (Vercel)
+// Connect to MongoDB
 const MONGODB_URI =
   process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/quiz_app';
 
-let isConnected = false;
-
-const connectDB = async () => {
-  if (mongoose.connection.readyState >= 1) {
-    return;
-  }
-  try {
-    await mongoose.connect(MONGODB_URI);
-    isConnected = true;
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => {
     console.log(`[MongoDB] Connected successfully to ${MONGODB_URI}`);
-  } catch (err) {
+  })
+  .catch((err) => {
     console.error('[MongoDB] Connection error:', err.message);
-  }
-};
-
-// Initial connection
-connectDB();
+  });
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Serverless DB connection check middleware
-app.use(async (req, res, next) => {
-  if (mongoose.connection.readyState !== 1) {
-    await connectDB();
-  }
-  next();
-});
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -74,4 +57,3 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
-
